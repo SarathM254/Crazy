@@ -29,13 +29,45 @@
                 <a href="#games" class="btn">Explore Games</a>
             </div>
         </section>
+
+        <section id="games">
+            <h2>Our Games</h2>
+            <div class="game-cards">
+                <div class="card">
+                    <h3>Space Shooter 3D</h3>
+                    <p>An intense 3D space shooter with fast-paced action and stunning visuals.</p>
+                    <button class="btn" data-game="space-shooter">Play Game</button>
+                </div>
+                <div class="card">
+                    <h3>Cyber Runner</h3>
+                    <p>An endless runner set in a futuristic city. How far can you go?</p>
+                    <button class="btn" data-game="cyber-runner">Play Game</button>
+                </div>
+                <div class="card">
+                    <h3>Memory Matrix</h3>
+                    <p>Test your memory with this cyberpunk-themed card matching game.</p>
+                    <button class="btn" data-game="memory-matrix">Play Game</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2024 Crazy Gaming. All Rights Reserved.</p>
     </footer>
 
+    <div id="game-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <canvas id="game-canvas"></canvas>
+            <div id="memory-matrix-container"></div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="script.js"></script>
+    <script src="spaceShooter.js"></script>
+    <script src="cyberRunner.js"></script>
+    <script src="memoryMatrix.js"></script>
 </body>
 </html>

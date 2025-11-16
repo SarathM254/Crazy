@@ -171,4 +171,52 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // Game Modal Logic
+    const gameModal = document.getElementById('game-modal');
+    const gameCanvas = document.getElementById('game-canvas');
+    const memoryMatrixContainer = document.getElementById('memory-matrix-container');
+    const closeBtn = document.querySelector('.close-btn');
+    const playButtons = document.querySelectorAll('.btn[data-game]');
+
+    let currentGame = null;
+
+    playButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const gameType = button.getAttribute('data-game');
+
+            // Hide all game containers
+            gameCanvas.style.display = 'none';
+            memoryMatrixContainer.style.display = 'none';
+
+            if (gameType === 'space-shooter') {
+                gameCanvas.style.display = 'block';
+                gameModal.style.display = 'block';
+                currentGame = new SpaceShooterGame(gameCanvas);
+                currentGame.gameLoop();
+            } else if (gameType === 'cyber-runner') {
+                gameCanvas.style.display = 'block';
+                gameModal.style.display = 'block';
+                currentGame = new CyberRunnerGame(gameCanvas);
+                currentGame.gameLoop();
+            } else if (gameType === 'memory-matrix') {
+                memoryMatrixContainer.style.display = 'grid';
+                gameModal.style.display = 'block';
+                memoryMatrixContainer.innerHTML = '';
+                currentGame = new MemoryMatrixGame(memoryMatrixContainer);
+            }
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        gameModal.style.display = 'none';
+        currentGame = null;
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == gameModal) {
+            gameModal.style.display = 'none';
+            currentGame = null;
+        }
+    });
 });
